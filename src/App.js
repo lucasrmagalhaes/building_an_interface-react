@@ -1,4 +1,5 @@
 import { BiArchive } from 'react-icons/bi';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
         
         Your Appointments
       </h1>
+
+      <Search />
     </div>
   );
 }
