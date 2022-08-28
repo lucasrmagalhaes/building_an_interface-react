@@ -1,8 +1,31 @@
 import { BiCalendarPlus } from 'react-icons/bi';
 import { useState } from 'react';
 
-const AddAppointment = () => {
+const AddAppointment = ({ onSendAppointment, lastId }) => {
+    const clearData = {
+        ownerName: '',
+        petName: '',
+        aptDate: '',
+        aptTime: '',
+        aptNotes: ''
+    }
+
     let [toggleForm, setToggleForm] = useState(false);
+    let [formData, setFormData] = useState(clearData);
+
+    function formDataPublish() {
+        const appointmentInfo = {
+            id: lastId + 1,
+            ownerName: formData.ownerName,
+            petName: formData.petName,
+            aptDate: formData.aptDate + ' ' + formData.aptTime,
+            aptNotes: formData.aptNotes
+        }
+
+        onSendAppointment(appointmentInfo);
+        setFormData(clearData);
+        setToggleForm(!toggleForm);
+    }
 
     return (
         <div>
@@ -29,6 +52,8 @@ const AddAppointment = () => {
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input 
                                     type="text" 
+                                    onChange={(event) => { setFormData({...formData, ownerName: event.target.value}) }}
+                                    value={formData.ownerName}
                                     name="ownerName" 
                                     id="ownerName"
                                     className="
@@ -47,6 +72,8 @@ const AddAppointment = () => {
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input 
                                     type="text" 
+                                    onChange={(event) => { setFormData({...formData, petName: event.target.value}) }}
+                                    value={formData.petName}
                                     name="petName" 
                                     id="petName"
                                     className="
@@ -65,6 +92,8 @@ const AddAppointment = () => {
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input 
                                     type="date" 
+                                    onChange={(event) => { setFormData({...formData, aptDate: event.target.value}) }}
+                                    value={formData.aptDate}
                                     name="aptDate" 
                                     id="aptDate"
                                     className="
@@ -82,7 +111,9 @@ const AddAppointment = () => {
 
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input 
-                                    type="time" 
+                                    type="time"
+                                    onChange={(event) => { setFormData({...formData, aptTime: event.target.value}) }}
+                                    value={formData.aptTime}
                                     name="aptTime" 
                                     id="aptTime"
                                     className="
@@ -100,7 +131,9 @@ const AddAppointment = () => {
 
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <textarea 
-                                    id="aptNotes" 
+                                    id="aptNotes"
+                                    onChange={(event) => { setFormData({...formData, aptNotes: event.target.value}) }}
+                                    value={formData.aptNotes}
                                     name="aptNotes" 
                                     rows="3"
                                     className="
@@ -115,7 +148,8 @@ const AddAppointment = () => {
                         <div className="pt-5">
                             <div className="flex justify-end">
                                 <button 
-                                    type="submit" 
+                                    type="submit"
+                                    onClick={formDataPublish}
                                     className="
                                         ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm 
                                         font-medium rounded-md text-white bg-blue-400 hover:bg-blue-700 focus:outline-none 
