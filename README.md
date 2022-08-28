@@ -1,4 +1,13 @@
-![image](https://user-images.githubusercontent.com/43296467/187078894-c17e9295-4dce-405a-89f8-68f552695921.png)
+<p align="center">
+  <a href="https://building-an-interface.netlify.app/">
+    <img
+      src="https://user-images.githubusercontent.com/43296467/187078894-c17e9295-4dce-405a-89f8-68f552695921.png"
+      alt="Appointments" 
+    />
+  </a>
+  <br />
+  <i>Building an Interface</i>
+</p>
 
 ---
 
