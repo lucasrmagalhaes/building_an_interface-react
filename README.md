@@ -32,3 +32,5 @@ npx tailwindcss init
 ```
 
 ---
+
+[PostCSS Language Support](https://marketplace.visualstudio.com/items?itemName=csstools.postcss)
