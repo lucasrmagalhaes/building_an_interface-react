@@ -9,7 +9,7 @@ const AddAppointment = () => {
             <button 
                 className={`
                     bg-blue-400 text-white px-2 py-3 w-full text-left
-                    ${toggleForm ? 'rounded-t-md' : 'rounded-md'}
+                    ${ toggleForm ? 'rounded-t-md' : 'rounded-md' }
                 `}
                 onClick={ () => { setToggleForm(!toggleForm) }}
             >
